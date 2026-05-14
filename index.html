@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joe's GE Homepage Preview</title>
+
+  <style>
+    :root {
+      --red: #d71920;
+      --black: #111111;
+      --dark: #181818;
+      --text: #222222;
+      --muted: #555555;
+      --light: #f3f3f3;
+      --line: #dddddd;
+      --white: #ffffff;
+      --radius: 14px;
+      --container: 1680px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .top-bar {
+      height: 42px;
+      background: #090909;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .top-bar span {
+      color: var(--red);
+    }
+
+    .header {
+      height: 92px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 120px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -3px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--red);
+    }
+
+    .search {
+      width: 360px;
+      height: 48px;
+      border: 1px solid #cfcfcf;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 24px;
+    }
+
+    .cart {
+      position: relative;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -14px;
+      right: -12px;
+      background: var(--red);
+      color: white;
+      font-size: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .hero {
+      background: var(--black);
+    }
+
+    .hero-box {
+      width: min(var(--container), calc(100% - 120px));
+      margin: 0 auto;
+      min-height: 390px;
+      border-radius: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 52% 48%;
+      background: #151515;
+    }
+
+    .hero-content {
+      padding: 64px 0 60px 96px;
+      color: #ffffff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 18px;
+      letter-spacing: 6px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::after {
+      content: "";
+      display: block;
+      width: 52px;
+      height: 3px;
+      background: var(--red);
+      margin-top: 14px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 58px;
+      line-height: 1.02;
+      letter-spacing: -1px;
+      color: #ffffff;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--red);
+    }
+
+    .hero p {
+      max-width: 620px;
+      font-size: 26px;
+      line-height: 1.35;
+      margin: 26px 0 26px;
+      color: #f0f0f0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 32px;
+    }
+
+    .btn {
+      height: 52px;
+      border-radius: 6px;
+      padding: 0 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-size: 21px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      min-width: 290px;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 75%, rgba(215, 25, 32, 0.95) 0 32%, transparent 33%),
+        #f2f2f2;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .trust {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-inner {
+      width: min(var(--container), calc(100% - 120px));
+      margin: 0 auto;
+      min-height: 82px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 36px;
+      border-right: 1px solid var(--line);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-icon {
+      font-size: 36px;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .trust-title {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .trust-subtitle {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    .section {
+      padding: 26px 0 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .section-title .small {
+      color: var(--red);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 31px;
+      line-height: 1.1;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 54px;
+      align-items: stretch;
+    }
+
+    .action-card {
+      background: #f0f0f0;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 150px;
+      display: grid;
+      grid-template-columns: 42% 58%;
+      align-items: center;
+    }
+
+    .action-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .action-content {
+      padding: 22px 24px;
+    }
+
+    .action-content h3 {
+      margin: 0 0 8px;
+      font-size: 27px;
+      line-height: 1.05;
+    }
+
+    .action-content p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.28;
+      color: #333;
+    }
+
+    .small-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: var(--red);
+      color: #ffffff;
+      height: 40px;
+      min-width: 188px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .device-section {
+      padding-top: 24px;
+    }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 36px;
+    }
+
+    .device-card {
+      height: 76px;
+      border: 1px solid #d4d4d4;
+      background: #f4f4f4;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      gap: 4px;
+      font-size: 18px;
+    }
+
+    .device-card .icon {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .reviews {
+      background: #f3f3f3;
+      margin-top: 28px;
+      padding: 18px 0 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .reviews-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .rating-line {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .stars {
+      color: var(--red);
+      letter-spacing: 3px;
+    }
+
+    .rating-line span:last-child {
+      font-weight: 400;
+      color: #333;
+    }
+
+    .review-link {
+      color: var(--red);
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+
+    .review-card {
+      background: #ffffff;
+      border: 1px solid #d4d4d4;
+      border-radius: 10px;
+      padding: 20px 28px;
+      min-height: 120px;
+    }
+
+    .review-card p {
+      margin: 8px 0 10px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .review-card strong {
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .top-bar {
+        height: 28px;
+        font-size: 13px;
+        gap: 6px;
+      }
+
+      .header {
+        height: 46px;
+      }
+
+      .container,
+      .hero-box,
+      .trust-inner {
+        width: 100%;
+      }
+
+      .header-inner {
+        padding: 0 16px;
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .mobile-menu {
+        display: block;
+        font-size: 23px;
+      }
+
+      .logo {
+        font-size: 30px;
+        letter-spacing: -2px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .search,
+      .nav {
+        display: none;
+      }
+
+      .header-icons {
+        gap: 18px;
+        font-size: 22px;
+      }
+
+      .header-icons .user {
+        display: none;
+      }
+
+      .hero {
+        background: #151515;
+      }
+
+      .hero-box {
+        min-height: 178px;
+        grid-template-columns: 45% 55%;
+        border-radius: 0;
+      }
+
+      .hero-content {
+        padding: 16px 0 16px 20px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
+        margin-bottom: 8px;
+      }
+
+      .eyebrow::after {
+        width: 34px;
+        height: 2px;
+        margin-top: 6px;
+      }
+
+      .hero h1 {
+        font-size: 27px;
+        line-height: 1.02;
+      }
+
+      .hero p {
+        font-size: 13px;
+        line-height: 1.25;
+        margin: 8px 0 10px;
+        max-width: 180px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .btn {
+        height: 28px;
+        min-width: 145px;
+        width: 145px;
+        padding: 0 12px;
+        font-size: 12px;
+        justify-content: space-between;
+      }
+
+      .hero-visual img {
+        object-position: center;
+      }
+
+      .trust-inner {
+        width: calc(100% - 28px);
+        margin-top: -15px;
+        position: relative;
+        z-index: 5;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        min-height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        overflow: hidden;
+      }
+
+      .trust-item {
+        padding: 9px 12px;
+        gap: 10px;
+        min-height: 48px;
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(1),
+      .trust-item:nth-child(2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .trust-icon {
+        font-size: 23px;
+      }
+
+      .trust-title {
+        font-size: 14px;
+      }
+
+      .trust-subtitle {
+        font-size: 12px;
+      }
+
+      .section {
+        padding: 8px 14px 0;
+      }
+
+      .section-title {
+        margin-bottom: 8px;
+      }
+
+      .section-title .small {
+        font-size: 14px;
+        letter-spacing: 5px;
+      }
+
+      .section-title h2 {
+        font-size: 23px;
+      }
+
+      .action-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .action-card {
+        min-height: 49px;
+        grid-template-columns: 20% 47% 33%;
+        border-radius: 7px;
+      }
+
+      .action-card img {
+        height: 49px;
+      }
+
+      .action-content {
+        padding: 5px 8px;
+        display: contents;
+      }
+
+      .action-content h3,
+      .action-content p {
+        grid-column: 2;
+      }
+
+      .action-content h3 {
+        align-self: end;
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .action-content p {
+        align-self: start;
+        font-size: 10px;
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      .small-btn {
+        grid-column: 3;
+        grid-row: 1 / 3;
+        justify-self: center;
+        align-self: center;
+        height: 28px;
+        min-width: 95px;
+        font-size: 10px;
+        border-radius: 5px;
+        gap: 8px;
+      }
+
+      .device-section {
+        padding-top: 8px;
+      }
+
+      .device-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .device-card {
+        height: 44px;
+        font-size: 13px;
+        border-radius: 6px;
+      }
+
+      .device-card .icon {
+        font-size: 17px;
+      }
+
+      .reviews {
+        margin-top: 8px;
+        padding: 10px 14px 18px;
+      }
+
+      .reviews-top {
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+
+      .rating-line {
+        font-size: 11px;
+      }
+
+      .stars {
+        letter-spacing: 1px;
+      }
+
+      .review-link {
+        display: none;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .review-card {
+        padding: 20px 24px;
+        min-height: 98px;
+        border-radius: 12px;
+      }
+
+      .review-card p {
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .review-card strong {
+        font-size: 18px;
+      }
+
+      .review-grid .review-card:nth-child(3) {
+        display: none;
+      }
+
+      .mobile-see-reviews {
+        display: block;
+        text-align: center;
+        color: var(--red);
+        font-size: 11px;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+    }
+
+    @media (min-width: 901px) {
+      .mobile-see-reviews {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    🚚 <strong>FREE US Shipping</strong> | Questions? Text <span>(360) 362-1722</span>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="mobile-menu">☰</div>
+
+      <div class="logo">Joe<span>♥</span>s</div>
+
+      <div class="search">⌕ &nbsp; Search parts, tools, devices...</div>
+
+      <nav class="nav">
+        <a href="#">Repair Services⌄</a>
+        <a href="#">Parts⌄</a>
+        <a href="#">Tools & Kits⌄</a>
+        <a href="#">Electronics⌄</a>
+        <a href="#">Guides⌄</a>
+        <a href="#">About Us</a>
+      </nav>
+
+      <div class="header-icons">
+        <span>⌕</span>
+        <span class="user">♡</span>
+        <span class="cart">🛒<span class="cart-badge">0</span></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-box">
+      <div class="hero-content">
+        <div class="eyebrow">Repair. Restore. Upgrade</div>
+        <h1>
+          Fix it.
+          <span>Don’t replace it.</span>
+        </h1>
+        <p>Expert repairs, quality parts, and pro tools — for every device you depend on.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#">Start a Repair <span>›</span></a>
+          <a class="btn btn-secondary" href="#">Shop Parts <span>›</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="assets/hero-visual.png" alt="Repair tools and electronics" />
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon">✉</div>
+        <div>
+          <div class="trust-title">Mail-In Repairs</div>
+          <div class="trust-subtitle">Convenient & reliable</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">♢</div>
+        <div>
+          <div class="trust-title">Quality Parts</div>
+          <div class="trust-subtitle">Tested. Trusted.</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">▣</div>
+        <div>
+          <div class="trust-title">Free US Shipping</div>
+          <div class="trust-subtitle">Fast, on all orders</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">☆</div>
+        <div>
+          <div class="trust-title">4.87 Rating</div>
+          <div class="trust-subtitle">3,334 verified reviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">What do you need?</div>
+          <h2>Repair or shop</h2>
+        </div>
+
+        <div class="action-grid">
+          <article class="action-card">
+            <img src="assets/repair-card.png" alt="Repair service" />
+            <div class="action-content">
+              <h3>Need a Repair?</h3>
+              <p>Fast, pro repairs for phones, tablets, headphones.</p>
+              <a class="small-btn" href="#">Get a Quote <span>›</span></a>
+            </div>
+          </article>
+
+          <article class="action-card">
+            <img src="assets/parts-card.png" alt="Replacement parts" />
+            <div class="action-content">
+              <h3>Shop Parts</h3>
+              <p>Reliable replacement parts for popular devices.</p>
+              <a class="small-btn" href="#">Browse Parts <span>›</span></a>
+            </div>
+          </article>
+
+          <article class="action-card">
+            <img src="assets/tools-card.png" alt="Repair tools" />
+            <div class="action-content">
+              <h3>Repair Tools & Kits</h3>
+              <p>Precision tools for DIY and professional repair work.</p>
+              <a class="small-btn" href="#">Shop Tools <span>›</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section device-section">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">Browse by device</div>
+          <h2>What are you fixing?</h2>
+        </div>
+
+        <div class="device-grid">
+          <a class="device-card" href="#"><div class="icon">▯</div><div>iPhone</div></a>
+          <a class="device-card" href="#"><div class="icon">♟</div><div>Android</div></a>
+          <a class="device-card" href="#"><div class="icon">▯</div><div>iPad / Tablet</div></a>
+          <a class="device-card" href="#"><div class="icon">♬</div><div>Headphones</div></a>
+          <a class="device-card" href="#"><div class="icon">▢</div><div>Smartwatch</div></a>
+          <a class="device-card" href="#"><div class="icon">☍</div><div>Gaming</div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">Customer Reviews</div>
+        </div>
+
+        <div class="reviews-top">
+          <div class="rating-line">
+            Excellent <span class="stars">★★★★★</span>
+            <span>4.87 · 3,334 reviews</span>
+          </div>
+          <a class="review-link" href="#">See all reviews ›</a>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Very easy to repair my Beats Studio 3. Parts arrived fast and fit perfectly.”</p>
+            <strong>Jeff H.</strong>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Part arrived quickly and was in perfect condition. Will definitely order again.”</p>
+            <strong>Anonymous</strong>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Excellent customer service and top quality parts. Highly recommend Joe’s!”</p>
+            <strong>Sloane T.</strong>
+          </article>
+        </div>
+
+        <a class="mobile-see-reviews" href="#">See all reviews⌄</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
